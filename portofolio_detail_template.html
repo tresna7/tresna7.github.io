@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline'; 
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+    img-src * data:;
+    font-src 'self' https://cdnjs.cloudflare.com;
+  ">
+  <meta name="description" content="Detail Portofolio Tresna Dhani">
+  <meta name="author" content="Tresna Dhani">
+  <title>Portfolio Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg-0: #0b0b0c;
+      --bg-1: #111214;
+      --fg: #e9e9ea;
+      --muted: #b5b5b7;
+      --line: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-strong: rgba(255, 255, 255, 0.1);
+      --radius: 22px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.35);
+      --accent: rgba(156, 163, 175, 0.8);
+      --success: rgba(34, 197, 94, 0.8);
+      --gold: rgba(7, 204, 134, 0.8); /* Warna hijau DataCamp */
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      color: var(--fg);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(255, 255, 255, 0.06), transparent 60%), 
+                  radial-gradient(800px 400px at 10% 20%, rgba(255, 255, 255, 0.04), transparent 60%),
+                  linear-gradient(180deg, var(--bg-0), var(--bg-1));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+      line-height: 1.65;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .nav-wrap {
+      position: sticky;
+      top: 14px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+    }
+    nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 10px;
+      backdrop-filter: blur(14px);
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    }
+    .nav-actions {
+      display: flex;
+      gap: 6px;
+      margin-left: 6px;
+    }
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      transition: all 0.25s ease;
+      font-size: 0.9rem;
+    }
+    .nav-btn:hover {
+      background: var(--glass-strong);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+    .hero {
+      padding: 96px 20px 64px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .portfolio-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      backdrop-filter: blur(14px);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      margin: 0 0 16px;
+      letter-spacing: 0.2px;
+    }
+    .hero p {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 64px;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .info-card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(14px);
+    }
+    .info-card h3 {
+      margin: 0 0 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--glass-strong);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+    .btn i {
+      font-size: 0.85rem;
+    }
+    .section {
+      margin-bottom: 48px;
+    }
+     .section:last-of-type {
+      margin-bottom: 0;
+    }
+    .section h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 24px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .section-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(7, 204, 134, 0.1);
+    }
+    .cert-image-wrapper {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        margin-bottom: 24px;
+    }
+    .cert-image-wrapper img {
+        width: 100%;
+        display: block;
+    }
+    .cert-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .cert-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--gold), rgba(7, 204, 134, 0.6));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      flex-shrink: 0;
+    }
+    .cert-info h4 {
+      margin: 0 0 4px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .cert-issuer {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .cert-date {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tool-card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+    .tool-card:hover {
+      background: var(--glass-strong);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .tool-icon {
+      font-size: 32px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .tool-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    ul.checklist {
+        list-style: none;
+        padding: 0;
+    }
+    ul.checklist li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    ul.checklist i {
+        color: var(--gold);
+        margin-top: 5px;
+    }
+    footer {
+      padding: 48px 20px;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      text-align: center;
+      color: var(--muted);
+      margin-top: 64px;
+    }
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 960px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav aria-label="Navigasi utama">
+      <div class="brand">TD</div>
+      <div class="nav-actions">
+        <a href="javascript:history.back()" class="nav-btn">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+        <a href="home_page.html" class="nav-btn">
+            <i class="fas fa-home"></i> Home
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="portfolio-category" id="cert-category">
+        <!-- Konten dinamis -->
+      </div>
+      <h1 id="cert-title">Memuat...</h1>
+      <p id="cert-hero-description"></p>
+    </div>
+  </section>
+
+<div class="container">
+  <div class="content-grid">
+    <div class="main-content">
+      <div class="info-card reveal-on-scroll">
+        <div class="cert-image-wrapper">
+          <img id="cert-image" src="" alt="Sertifikat">
+        </div>
+        <div class="certificate-card" style="padding: 24px 0 0; border-top: 1px solid var(--line); border-radius: 0; margin-top: 24px;">
+          <div class="cert-header">
+            <div class="cert-icon" id="cert-main-icon"></div>
+            <div class="cert-info">
+              <h4 id="cert-card-title"></h4>
+              <div id="cert-issuer" class="cert-issuer"></div>
+              <div id="cert-date" class="cert-date"></div>
+            </div>
+          </div>
+          <p id="cert-long-description"></p>
+        </div>
+      </div>
+      <div class="info-card reveal-on-scroll">
+        <h3><i class="fas fa-info-circle"></i> Portfolio Info</h3>
+        <div class="portfolio-info-content" id="portfolio-info-content">
+            <!-- Konten dinamis akan dimasukkan di sini -->
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="info-card reveal-on-scroll">
+        <h3><i class="fas fa-tasks"></i> Key Features & Capabilities</h3>
+        <ul class="checklist" id="cert-skills-list">
+          <!-- Konten dinamis -->
+        </ul>
+      </div>
+      <div class="info-card reveal-on-scroll">
+        <h3><i class="fas fa-book-open"></i> Tools & Technologies</h3>
+        <div class="tools-grid" id="cert-tools-grid">
+          <!-- Konten dinamis -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer class="reveal-on-scroll">© <span id="year"></span> Tresna Dhani.</footer>
+
+  <!-- FIX: Corrected script paths -->
+  <script src="portfolio_&_project_data.js"></script>
+  <script src="portofolio_&_project_template_loader.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("year").textContent = new Date().getFullYear();
+        setTimeout(() => {
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                }
+            });
+            }, {
+            threshold: 0.1
+            });
+
+            const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+            elementsToReveal.forEach((el) => observer.observe(el));
+        }, 200);
+    });
+  </script>
+</body>
+</html>
