@@ -29,7 +29,7 @@
     nav { display: flex; gap: 6px; align-items: center; padding: 10px; backdrop-filter: blur(14px); background: var(--glass); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow); }
     .brand { font-weight: 700; letter-spacing: 0.2px; padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); }
     .menu { display: flex; gap: 4px; margin-left: 6px; }
-    .menu a { position: relative; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid transparent; }
+    .menu a { position: relative; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid transparent; font-size: 0.9rem; }
     .menu a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 2px; border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; background: rgba(255, 255, 255, 0.35); }
     .menu a:hover { background: var(--glass-strong); border-color: var(--line); }
     .menu a:hover::after { transform: scaleX(1); }
@@ -73,14 +73,29 @@
 
     /* Mobile Styles */
     @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        border-radius: var(--radius);
+      }
       .menu {
-        display: none; /* Sembunyikan menu utama di mobile */
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 0;
+        width: 100%;
+        gap: 2px;
+        margin-top: 8px;
+      }
+      .menu a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
       }
       .grid.cols-4, .grid.cols-3, .grid.cols-2 {
         grid-template-columns: 1fr; /* Buat semua grid menjadi satu kolom */
       }
       .hero {
-        padding: 64px 20px 32px;
+        padding: 80px 20px 32px;
       }
       .title {
         font-size: 2rem;
@@ -90,10 +105,6 @@
       }
       section {
         padding: 48px 16px;
-      }
-      nav {
-        width: 100%;
-        justify-content: center;
       }
     }
   </style>
