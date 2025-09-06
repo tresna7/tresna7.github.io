@@ -70,6 +70,32 @@
     footer { padding: 48px 20px 80px; border-top: 1px solid var(--line); background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)); text-align: center; color: var(--muted); }
      .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform; }
     .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .menu {
+        display: none; /* Sembunyikan menu utama di mobile */
+      }
+      .grid.cols-4, .grid.cols-3, .grid.cols-2 {
+        grid-template-columns: 1fr; /* Buat semua grid menjadi satu kolom */
+      }
+      .hero {
+        padding: 64px 20px 32px;
+      }
+      .title {
+        font-size: 2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+      }
+      section {
+        padding: 48px 16px;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,8 +204,7 @@
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Project</h2>
       <div class="grid cols-2" id="project-grid">
-        <!-- Card proyek akan dibuat secara otomatis oleh JavaScript -->
-      </div>
+        </div>
     </div>
   </section>
 
@@ -187,8 +212,7 @@
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Portofolio</h2>
       <div class="grid cols-3" id="portfolio-grid">
-        <!-- Card portofolio akan dibuat secara otomatis oleh JavaScript -->
-      </div>
+        </div>
     </div>
   </section>
 
@@ -210,7 +234,6 @@
   </section>
   <footer class="reveal-on-scroll">© <span id="year"></span> Tresna Dhani.</footer>
 
-  <!-- FIX: Corrected script path to be relative to root -->
   <script src="portfolio_&_project_data.js"></script>
 
   <script>
@@ -255,7 +278,6 @@
                 card.innerHTML = `
                     <h3>${item.title}</h3>
                     <p class="muted">${item.shortDescription}</p>
-                    <!-- FIX: Corrected path for portfolio detail -->
                     <a href="portofolio_detail_template.html?id=${item.id}" class="card-button">
                         <i class="fas fa-certificate"></i> Lihat Detail
                     </a>
@@ -274,7 +296,6 @@
                 card.innerHTML = `
                     <h3>${item.title}</h3>
                     <p class="muted">${item.shortDescription}</p>
-                    <!-- FIX: Corrected path for project detail -->
                     <a href="project_detail_template.html?id=${item.id}" class="card-button">
                         <i class="fas fa-external-link-alt"></i> Lihat Project
                     </a>
