@@ -315,6 +315,29 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 64px 20px 32px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 0 16px 48px;
+      }
+      .info-card {
+        padding: 16px;
+      }
+      .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -335,8 +358,7 @@
   <section class="hero">
     <div class="hero-content">
       <div class="portfolio-category" id="cert-category">
-        <!-- Konten dinamis -->
-      </div>
+        </div>
       <h1 id="cert-title">Memuat...</h1>
       <p id="cert-hero-description"></p>
     </div>
@@ -364,22 +386,19 @@
       <div class="info-card reveal-on-scroll">
         <h3><i class="fas fa-info-circle"></i> Portfolio Info</h3>
         <div class="portfolio-info-content" id="portfolio-info-content">
-            <!-- Konten dinamis akan dimasukkan di sini -->
-        </div>
+            </div>
       </div>
     </div>
     <div class="sidebar">
       <div class="info-card reveal-on-scroll">
         <h3><i class="fas fa-tasks"></i> Key Features & Capabilities</h3>
         <ul class="checklist" id="cert-skills-list">
-          <!-- Konten dinamis -->
-        </ul>
+          </ul>
       </div>
       <div class="info-card reveal-on-scroll">
         <h3><i class="fas fa-book-open"></i> Tools & Technologies</h3>
         <div class="tools-grid" id="cert-tools-grid">
-          <!-- Konten dinamis -->
-        </div>
+          </div>
       </div>
     </div>
   </div>
@@ -387,7 +406,6 @@
 
   <footer class="reveal-on-scroll">© <span id="year"></span> Tresna Dhani.</footer>
 
-  <!-- FIX: Corrected script paths -->
   <script src="portfolio_&_project_data.js"></script>
   <script src="portofolio_&_project_template_loader.js"></script>
   <script>
