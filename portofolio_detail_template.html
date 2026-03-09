@@ -318,25 +318,19 @@
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-      .hero {
-        padding: 64px 20px 32px;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .container {
-        padding: 0 16px 48px;
-      }
-      .info-card {
-        padding: 16px;
-      }
-      .nav-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-      }
+      .nav-wrap { padding: 0 12px; top: 10px; }
+      nav { width: 100%; padding: 6px 12px; justify-content: space-between; }
+      .nav-actions { gap: 4px; }
+      .nav-btn { padding: 0.6rem 0.8rem; font-size: 0.85rem; }
+      .hero { padding: 64px 16px 32px; }
+      .hero h1 { font-size: clamp(1.8rem, 6vw, 2.2rem); }
+      .hero p { font-size: 1rem; }
+      .container { padding: 0 16px 48px; }
+      .info-card { padding: 20px; }
+      .cert-header { flex-direction: column; text-align: center; gap: 12px; }
+      .cert-icon { margin: 0 auto; }
+      .tools-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+      img, video { max-width: 100%; height: auto; }
     }
   </style>
 </head>

@@ -93,30 +93,26 @@
     .copy-code-btn:hover { background: rgba(255, 255, 255, 0.2); color: var(--fg); }
     .copy-code-btn .fas.fa-check { color: var(--success); }
 
+    /* Mobile Styles */
     @media (max-width: 768px) {
+      .nav-wrap { padding: 0 12px; top: 10px; }
+      nav { width: 100%; padding: 6px 12px; justify-content: space-between; }
+      .nav-actions { gap: 4px; }
+      .nav-btn { padding: 0.6rem 0.8rem; font-size: 0.85rem; }
+      .hero { padding: 64px 16px 32px; }
+      .hero h1 { font-size: clamp(1.8rem, 6vw, 2.2rem); }
+      .hero p { font-size: 1rem; }
+      .container { padding: 0 16px 48px; }
+      .main-card, .info-card { padding: 20px; }
       .slide img { height: 250px; }
-      .details-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero {
-        padding: 64px 20px 32px;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .container {
-        padding: 0 16px 48px;
-      }
-      .main-card, .info-card {
-        padding: 16px;
-      }
-      .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .details-grid { grid-template-columns: 1fr; gap: 16px; }
+      .hero-actions { flex-direction: column; gap: 12px; width: 100%; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 12px; }
+      pre[class*="language-"] { padding: 16px 12px; font-size: 0.85rem; overflow-x: auto; max-width: 100%; }
+      .share-btn-group { flex-direction: column; gap: 8px; }
+      .share-btn { width: 100%; justify-content: center; padding: 12px; }
+      .tech-stack { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+      img, video { max-width: 100%; height: auto; }
     }
   </style>
 </head>
